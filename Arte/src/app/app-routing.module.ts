@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AlbumComponent } from '../app/components/album/album.component';
 import { AlbumsearchComponent } from '../app/components/albumsearch/albumsearch.component';
+import { ArtistComponent } from './components/artist/artist.component';
 
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'playlist', component: PlaylistComponent},
-  {path: 'searchalbums', component: AlbumsearchComponent},
-  {path: 'album/:id', component: AlbumComponent}
+  {path: 'albums', component: AlbumsearchComponent},
+  {path: 'album/:id', component: AlbumComponent},
+  {path: 'artists', component: ArtistComponent}
 ];
 
 @NgModule({

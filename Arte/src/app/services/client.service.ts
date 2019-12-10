@@ -57,26 +57,6 @@ export class ClientService {
       })
     };
 
-<<<<<<< HEAD
-    return this.http.get(this.searchUrl, httpOptions);
-  }
-  getAlbum(artistId: string, token: string) {
-
-    this.AlbumsUrl = 'https://api.spotify.com/v1/artists/' + artistId + '/albums/?query=&limit=50';
-    let headers = new Headers();
-    headers.append('Authorization', 'Bearer ' + token);
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Basic ' + this.encoded
-      })
-    };
-
-    return this.http.get(this.AlbumsUrl, httpOptions);
-
-
-  }
-=======
   return this.http.get(this.searchUrl , httpOptions);
 }
 
@@ -106,5 +86,4 @@ getAlbum(id:string ,token:string): Observable<any>{
 }
 
 
->>>>>>> integration
 }
