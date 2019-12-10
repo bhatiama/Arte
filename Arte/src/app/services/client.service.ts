@@ -57,4 +57,17 @@ export class ClientService {
 
   return this.http.get(this.searchUrl , httpOptions);
 }
+
+searchMusic(str:string, type='album' ,token:string): Observable<any>{
+  this.searchUrl = 'https://api.spotify.com/v1/search?query='+str+'&offset=0&limit=20&type='+type;
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token
+    })
+  };
+  return this.http.get(this.searchUrl , httpOptions);
+}
+
+
 }
