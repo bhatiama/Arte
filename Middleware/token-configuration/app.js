@@ -20,7 +20,7 @@ const express = require('express'), //Using Express framework for application ea
 /**
  * Api auth key from spotify
  */
-const clientId ='8173fa018b554d1c8d306e92da2c364b'; 
+const clientId = '8173fa018b554d1c8d306e92da2c364b';
 const clientSecret = '06356f82e3334a85b8b520aca5c57d6f';
 /**
  * @function stringGenerator
@@ -38,11 +38,28 @@ let stringGenerator = (length) => {
   return text;
 }
 
+/**
+ * Getting authorization for this application from spotify 
+ */
+app.get('/login', function (req, res) {
+  var state = stringGenerator(16);
+  res.cookie(stateKey, state);
+  let scope = 'user-read-private user-read-email playlist-modify-public playlist-modify-private';
+  res.redirect('https://accounts.spotify.com/authorize?' +
+    querystring.stringify({
+      response_type: 'code',
+      client_id: client_id,
+      scope: scope,
+      redirect_uri: redirect_uri,
+      state: state
+    }));
+});
+
 let key = 'spotify_auth_state';
 
 var path = require('path');
- app.use(express.static(path.join(__dirname, './public')))
-   .use(cookieParser());
+app.use(express.static(path.join(__dirname, './public')))
+  .use(cookieParser());
 
 
 app.listen(port, hostname, () => {
