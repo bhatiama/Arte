@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { ClientService } from './../../services/client.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playlist.component.scss']
 })
 export class PlaylistComponent implements OnInit {
-
-  constructor() { }
+  searchResult: string[];
+  constructor(private client: ClientService) { }
 
   ngOnInit() {
+    this.client.getToken()
+    .subscribe(res => {
+      this.client.getPlaylist(res.access_token)
+      // tslint:disable-next-line: no-shadowed-variable
+      .subscribe(res => {
+        this.searchResult = res.items;
+      });
+    });
   }
 
 }

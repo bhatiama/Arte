@@ -21,14 +21,14 @@ export class ClientService {
 
   }
 
-  getusername(token: string): Observable<any>{
+  getUsername(token: string): Observable<any> {
     this.searchUrl='https://api.spotify.com/v1/me';
     let headers = new HttpHeaders();
     headers.append('Authorization' , 'Bearer ' + token);
     return this.http.get(this.searchUrl , {headers});
 }
 
-  getplaylist(token: string): Observable<any>{
+  getPlaylist(token: string): Observable<any> {
 
   console.log(this.encoded);
   this.searchUrl = 'https://api.spotify.com/v1/users/212uzew7ttksinacnuwhttupy/playlists';
