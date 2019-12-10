@@ -11,3 +11,16 @@
     height: 350px; width: 100%; display: block;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    padding: 10px;
+  }
+
+  .grig-item-1 {
+    justify-self: stretch;
+  }
+
+  .grid-item-2 {
+    margin-left: 30px;;
+  }
