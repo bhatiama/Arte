@@ -36,6 +36,10 @@ let stringGenerator = (length) => {
 
 let key = 'spotify_auth_state';
 
+var path = require('path');
+ app.use(express.static(path.join(__dirname, './public')))
+   .use(cookieParser());
+
 
 app.listen(port, hostname, () => {
   console.log(`Middleware is up on port ${port}`);
