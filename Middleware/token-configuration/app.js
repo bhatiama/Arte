@@ -17,7 +17,11 @@ const express = require('express'), //Using Express framework for application ea
   cookieParser = require('cookie-parser'), //https://www.npmjs.com/package/cookie-parser
   request = require('request'),
   querystring = require('querystring');
-
+/**
+ * Api auth key from spotify
+ */
+const clientId ='8173fa018b554d1c8d306e92da2c364b'; 
+const clientSecret = '06356f82e3334a85b8b520aca5c57d6f';
 /**
  * @function stringGenerator
  * Generates a random string containing numbers and letters
