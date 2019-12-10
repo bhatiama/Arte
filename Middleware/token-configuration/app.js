@@ -17,6 +17,7 @@ const express = require('express'), //Using Express framework for application ea
   cookieParser = require('cookie-parser'), //https://www.npmjs.com/package/cookie-parser
   request = require('request'),
   querystring = require('querystring');
+  hostname ="localhost";
 /**
  * Api auth key from spotify
  */
@@ -70,8 +71,8 @@ app.get('/login', function (req, res) {
  * @function app.use() using path to manage the cookies 
  */
 var path = require('path');
-app.use(express.static(path.join(__dirname, './public')))
-  .use(cookieParser());
+app.use(express.static(__dirname + '/public'))
+   .use(cookieParser());
 
 /**
  * @function app.get('/callback') this is the call backpath to which the api will send it to after login
@@ -113,7 +114,6 @@ app.get('/callback', function (req, res) {
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
-        // passing token to browser to get request from there
         res.redirect('/#' +
           querystring.stringify({
             access_token: access_token,
