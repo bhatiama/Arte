@@ -17,6 +17,7 @@ export class ClientService {
   private clientId = '8173fa018b554d1c8d306e92da2c364b';
   private clientSecret = '06356f82e3334a85b8b520aca5c57d6f';
   private encoded = btoa(this.clientId + ':' + this.clientSecret);
+  private AlbumUrl: string;
   constructor(private http: HttpClient) { }
 
   getToken(): Observable<any> {
@@ -67,6 +68,20 @@ searchMusic(str:string, type='album' ,token:string): Observable<any>{
     })
   };
   return this.http.get(this.searchUrl , httpOptions);
+}
+
+getAlbum(id:string ,token:string): Observable<any>{
+  
+  this.AlbumUrl = 'https://api.spotify.com/v1/albums/'+id;
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + token
+    })
+  };
+  console.log("Came here2");
+  return this.http.get(this.AlbumUrl , httpOptions);
+
 }
 
 
