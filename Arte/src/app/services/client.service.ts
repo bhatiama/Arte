@@ -16,6 +16,7 @@ export class ClientService {
   private searchUrl: string;
   private clientId = '8173fa018b554d1c8d306e92da2c364b';
   private clientSecret = '06356f82e3334a85b8b520aca5c57d6f';
+  private AlbumsUrl: string;
   private encoded = btoa(this.clientId + ':' + this.clientSecret);
   constructor(private http: HttpClient) { }
 
@@ -28,7 +29,7 @@ export class ClientService {
       })
     };
 
-    return this.http.post('https://accounts.spotify.com/api/token', params , httpOptions );
+    return this.http.post('https://accounts.spotify.com/api/token', params, httpOptions);
 
   }
 
@@ -41,20 +42,36 @@ export class ClientService {
       })
     };
     console.log(httpOptions);
-    return this.http.get(this.searchUrl , httpOptions);
-}
+    return this.http.get(this.searchUrl, httpOptions);
+  }
 
   getPlaylist(token: string): Observable<any> {
 
-  console.log(this.encoded);
-  this.searchUrl = 'https://api.spotify.com/v1/users/' + token + '/playlists';
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: 'Bearer ' + token
-    })
-  };
+    console.log(this.encoded);
+    this.searchUrl = 'https://api.spotify.com/v1/users/' + token + '/playlists';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + token
+      })
+    };
 
-  return this.http.get(this.searchUrl , httpOptions);
-}
+    return this.http.get(this.searchUrl, httpOptions);
+  }
+  getAlbum(artistId: string, token: string) {
+
+    this.AlbumsUrl = 'https://api.spotify.com/v1/artists/' + artistId + '/albums/?query=&limit=50';
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + token);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Basic ' + this.encoded
+      })
+    };
+
+    return this.http.get(this.AlbumsUrl, httpOptions);
+
+
+  }
 }
