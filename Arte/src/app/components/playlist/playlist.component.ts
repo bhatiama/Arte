@@ -14,10 +14,15 @@ export class PlaylistComponent implements OnInit {
   ngOnInit() {
     this.client.getToken()
     .subscribe(res => {
-      this.client.getPlaylist(res.access_token)
+      console.log(res);
+      this.client.getUsername(res.access_token)
+      .subscribe(res => {
+        console.log(res);
+        this.client.getPlaylist(res.user_id)
       // tslint:disable-next-line: no-shadowed-variable
       .subscribe(res => {
         this.searchResult = res.items;
+        });
       });
     });
   }

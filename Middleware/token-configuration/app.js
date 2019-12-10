@@ -19,6 +19,7 @@ const express = require('express'), //Using Express framework for application ea
   querystring = require('querystring'),
   hostname ="localhost",
   stateKey = 'spotify_auth_state';
+  redirectUri = "http://localhost:4200";
 /**
  * Api auth key from spotify
  */
@@ -60,9 +61,9 @@ app.get('/login', function (req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
-      client_id: client_id,
+      client_id: clientId,
       scope: scope,
-      redirect_uri: redirect_uri,
+      redirect_uri: redirectUri,
       state: state
     }));
 });

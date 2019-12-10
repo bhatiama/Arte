@@ -8,6 +8,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PlaylistComponent } from './components/playlist/playlist.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
