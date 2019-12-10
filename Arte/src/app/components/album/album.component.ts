@@ -1,7 +1,7 @@
 import { ClientService } from './../../services/client.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Album } from "../../models/Album";
+import { Album } from '../../models/albums';
+import { ActivatedRoute , Params } from "@angular/router";
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -10,17 +10,24 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./album.component.scss']
 })
 export class AlbumComponent implements OnInit {
+
   id:string;
   album:Album[];
-  constructor(private client: ClientService , private route:ActivatedRoute) { }
-  ngOnInit() {
-    this.route.params.pipe(map(params => params['id'])
+
+  constructor(private ClientService:ClientService , private _route:ActivatedRoute){}
+
+
+  ngOnInit(){
+
+
+      this._route.params
+      .pipe(map(params => params['id']))
       .subscribe((id) => {
-        this.client.getToken()
+          this.ClientService.getToken()
           .subscribe(data => {
-            this.client.getAlbum(id, data.access_token)
+              this.ClientService.getAlbum(id, data.access_token)
               .subscribe(album => {
-                this.album = album;
+                  this.album = album;
               })
           })
       })
