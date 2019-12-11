@@ -1,8 +1,17 @@
-<h1 class="search">Search Albums</h1>
-<h4 class="searchdes">this is for you to search Albums</h4>
+
+
+<h3>
+    Search Albums
+    <br>
+    <small class="text-muted">this is for you to search Albums</small>
+  </h3>
 <form class="form-inline my-2 my-lg-0">
-   <input class="form-control mr-sm-2" type="text" name= "searchStr" [(ngModel)]="searchStr" (keyup)= "searchMusic()" placeholder="Search">
+<div class="search-container">
+   <input class="form-control mr-sm-2 search-input" type="text" name= "searchStr" [(ngModel)]="searchStr" (keyup)= "searchMusic()" placeholder="Search">
+</div>
 </form>
+
+
 <div *ngIf = "searchRes">
    <div *ngFor = "let res of searchRes">
       <div class="row">
@@ -14,3 +23,6 @@
       </div>
    </div>
 </div>
+
+
+
