@@ -182,7 +182,6 @@ export class ClientService {
     };
     return this.http.get(this.AlbumUrl, httpOptions);
   }
-<<<<<<< HEAD
 
   getPlaylistTracks(playlistId: string): Observable<any> {
     this.searchUrl = 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks';
@@ -194,10 +193,5 @@ export class ClientService {
     };
     return this.http.get(this.searchUrl, httpOptions);
   }
-
-
-
-=======
->>>>>>> 9a51e1bde351ddd9b344635e167b37edca1283a5
 }
 
