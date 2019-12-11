@@ -12,6 +12,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { SearchComponent } from './components/search/search.component'
 import { FormsModule } from '@angular/forms';
+import { TracksComponent } from './components/tracks/tracks.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     ArtistComponent,
     HomepageComponent,
     PlaylistComponent,
-    SearchComponent
+    SearchComponent,
+    TracksComponent,
+
   ],
   imports: [
     BrowserModule,
