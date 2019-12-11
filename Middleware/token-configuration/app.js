@@ -60,7 +60,7 @@ app.get('/login', function (req, res) {
   let scope = 'user-read-private user-read-email playlist-modify-public playlist-modify-private';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
-      response_type: 'code',
+      response_type: 'token',
       client_id: clientId,
       scope: scope,
       redirect_uri: redirectUri,
