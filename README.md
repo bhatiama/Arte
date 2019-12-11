@@ -4,29 +4,9 @@
     1. Search Tracks
     2. Search Albums
     3. Search Artists
-    4. Access and Create his playlist
+    4. Access and Create playlist
 
 ## Description of files
 
-    1. 
+    1. It includes two main folders named Arte which is for front end and other is Middleware which is for backend middleware.
 
-## Usage
-
-    Arte is for non-commercial use only.
-
-## Prerequistes
-
-    1. Visual Code studio or similar IDE
-    2. Git Bash
-    3. Node.js version 10.9.0 or later.
-    4. NPM package manager
-    5. Angular CLI version 8.3.19.
-
-## Installation
-
-## Features
-
-## References
-
-1. [Spotify Web API](https://developer.spotify.com/web-api/)
-2. [Spotify Web API Endpoints](https://developer.spotify.com/web-api/endpoint-reference/)
