@@ -13,6 +13,7 @@ import { PlaylistComponent } from './components/playlist/playlist.component';
 import { SearchComponent } from './components/search/search.component'
 import { FormsModule } from '@angular/forms';
 import { TracksComponent } from './components/tracks/tracks.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { TracksComponent } from './components/tracks/tracks.component';
     PlaylistComponent,
     SearchComponent,
     TracksComponent,
+    LogoutComponent,
 
   ],
   imports: [

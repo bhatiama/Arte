@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 const httpOptions = {
@@ -12,6 +13,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class ClientService {
   private searchUrl: string;
   private clientId = '8173fa018b554d1c8d306e92da2c364b';
@@ -21,7 +23,9 @@ export class ClientService {
   private encoded = btoa(this.clientId + ':' + this.clientSecret);
   private AlbumUrl: string;
   constructor(private http: HttpClient) { }
-
+/**
+ * @description gets the token from the api based on the clientid and secret 
+ */
   getToken(): Observable<any> {
     const params = ('grant_type=client_credentials');
     const httpOptions = {
@@ -34,7 +38,10 @@ export class ClientService {
     return this.http.post('https://accounts.spotify.com/api/token', params, httpOptions);
 
   }
-
+/**
+ * @description gets user name
+ * @param token auth token
+ */
   getUsername(token: string): Observable<any> {
     this.searchUrl = 'https://api.spotify.com/v1/me';
     const httpOptions = {
@@ -46,7 +53,10 @@ export class ClientService {
     console.log(httpOptions);
     return this.http.get(this.searchUrl, httpOptions);
   }
-
+/**
+ * @description gets playlist
+ * @param token auth token
+ */
   getPlaylist(token: string): Observable<any> {
 
     console.log(this.encoded);
@@ -60,7 +70,12 @@ export class ClientService {
 
     return this.http.get(this.searchUrl, httpOptions);
   }
-
+/**
+ * @description searches for artists
+ * @param str string that is passed as a query param
+ * @param type type is album 
+ * @param token auth token
+ */
   searchMusicArtist(str: string, type = 'artist', token: string): Observable<any> {
     this.searchUrl = 'https://api.spotify.com/v1/search?query=' + str + '&offset=0&limit=20&type=' + type;
     const httpOptions = {
@@ -72,7 +87,12 @@ export class ClientService {
     return this.http.get(this.searchUrl, httpOptions);
   }
 
-
+/**
+ * @description searches music tracks
+ * @param str string that is passed as a query param
+ * @param type type is track
+ * @param token auth token
+ */
   searchMusicTrack(str: string, type = 'track', token: string): Observable<any> {
     console.log(this.encoded);
     this.searchUrl = 'https://api.spotify.com/v1/search?query=' + str + '&offset=0&limit=20&type=' + type;
@@ -84,7 +104,13 @@ export class ClientService {
     };
     return this.http.get(this.searchUrl, httpOptions)
   }
-
+/**
+ * @description searches albums
+ * @param str string that is passed as a query param
+ * @param type type is album
+ * @param token auth token
+ * @returns an array of Albums matching the criteria
+ */
   searchMusicAlbum(str: string, type = 'album', token: string): Observable<any>  {
     this.searchUrl = 'https://api.spotify.com/v1/search?query=' + str + '&offset=0&limit=20&type=' + type;
     const httpOptions = {
@@ -96,7 +122,12 @@ export class ClientService {
     return this.http.get(this.searchUrl, httpOptions);
   }
 
-
+/**
+ * @function getAlbum
+ * @param id string that mathes the album id
+ * @param token auth token
+ * @returns a particular album with album id
+ */
   getAlbum(id: string, token: string): Observable<any> {
 
     this.AlbumUrl = 'https://api.spotify.com/v1/albums/' + id;
@@ -110,7 +141,11 @@ export class ClientService {
     return this.http.get(this.AlbumUrl, httpOptions);
   }
 
-
+/**
+ * 
+ * @param id gets a particular artist
+ * @param token the Identity token
+ */
   getArtist(id: string, token: string): Observable<any> {
 
     this.ArtistUrl = 'https://api.spotify.com/v1/artists/' + id;
@@ -122,6 +157,12 @@ export class ClientService {
     };
     return this.http.get(this.ArtistUrl, httpOptions);
   }
+
+  /**
+   * @function getAlbums
+   * @param artistId string based on the id this function will return list of albums 
+   * @param token 
+   */
   getAlbums(artistId: string, token: string): Observable<any> {
 
     this.AlbumsUrl = 'https://api.spotify.com/v1/artists/' + artistId + '/albums/?query=&limit=50';
@@ -134,8 +175,5 @@ export class ClientService {
     };
     return this.http.get(this.AlbumUrl, httpOptions);
   }
-
-
-
 }
 
