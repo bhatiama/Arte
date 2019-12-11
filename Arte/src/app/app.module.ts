@@ -12,7 +12,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { SearchComponent } from './components/search/search.component'
 import { FormsModule } from '@angular/forms';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+import { TracksComponent } from './components/tracks/tracks.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     HomepageComponent,
     PlaylistComponent,
     SearchComponent,
-    AboutUsComponent
+    TracksComponent,
+
   ],
   imports: [
     BrowserModule,
