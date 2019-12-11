@@ -1,8 +1,6 @@
-
+<div class="container">
 <h3>
   Search Tracks
-  <br>
-  <small class="text-muted">this is for you to search tracks</small>
 </h3>
 <form class="form-inline my-2 my-lg-0">
   <div class="search-container">
@@ -11,7 +9,7 @@
 </form>
 
 
-<div *ngIf = "searchRes">
+<div *ngIf = "searchRes ">
     <div *ngFor = "let res of searchRes">
         <div class=" row justify-content-md-center">
             <div class="col-md-8">
@@ -28,4 +26,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
