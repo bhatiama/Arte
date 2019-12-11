@@ -10,6 +10,11 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./artist.component.scss']
 })
 export class ArtistComponent implements OnInit {
+
+   /**
+ * @param searchStr music album search string
+ * @param searchRes response array of Artist  model type
+ */
   searchStr: string;
   searchRes: Artist[];
   constructor(private clientService: ClientService, private route: ActivatedRoute) { }

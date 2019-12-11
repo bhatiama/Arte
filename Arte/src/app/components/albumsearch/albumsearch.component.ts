@@ -10,6 +10,10 @@ import { ClientService } from '../../services/client.service';
 })
 export class AlbumsearchComponent implements OnInit {
 
+  /**
+ * @param searchStr music album search string
+ * @param searchRes response array of album  model type
+ */
   searchStr: string;
   searchRes: Album[];
 

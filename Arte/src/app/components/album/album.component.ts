@@ -11,12 +11,16 @@ import { map } from 'rxjs/operators';
 })
 export class AlbumComponent implements OnInit {
 
+/**
+ * @param id id that is passed as a query param
+ * @param album model type
+ */
   id:string;
   album:Album[];
 
   constructor(private ClientService:ClientService , private _route:ActivatedRoute){}
 
-  // // service call to fetch album details
+  //service call to fetch album details
   ngOnInit(){
       console.log(this._route.params);
       this._route.params
