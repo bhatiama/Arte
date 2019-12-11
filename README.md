@@ -23,3 +23,10 @@
     4. NPM package manager
     5. Angular CLI version 8.3.19.
 
+## Installation
+
+    1. Clone the repository `git clone https://github.com/neu-mis-info6150-fall-2019/final-project-angular-avengers.git'.
+    2. Navigate to project directory `cd Arte`.
+    3. Run `npm install` to install angular libraries.
+    4. Then navigate to project directory 'Middleware' and run `npm install` to install node libraries.
+    5. 
