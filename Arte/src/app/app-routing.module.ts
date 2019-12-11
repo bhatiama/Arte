@@ -8,6 +8,7 @@ import { AlbumsearchComponent } from '../app/components/albumsearch/albumsearch.
 import { ArtistComponent } from './components/artist/artist.component';
 import { AboutComponent } from './components/about/about.component';
 import { TracksComponent } from './components/tracks/tracks.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path: 'album/:id', component: AlbumComponent},
   {path: 'artists', component: ArtistComponent},
   {path: 'tracks', component: TracksComponent},
-
+  {path: 'logout', component: LogoutComponent}
 ];
 
 @NgModule({
