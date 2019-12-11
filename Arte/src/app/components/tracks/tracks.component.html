@@ -1,9 +1,12 @@
 
-<h1>Search tracks</h1>
-<p class="lead">this is for you to search tracks</p>
-<form>
-  <div>
-    <input type="text" name= "searchStr" [(ngModel)]="searchStr" (keyup)= "searchMusics()" class= "form-control" placeholder="Search music....">
+<h3>
+  Search Tracks
+  <br>
+  <small class="text-muted">this is for you to search tracks</small>
+</h3>
+<form class="form-inline my-2 my-lg-0">
+  <div class="search-container">
+    <input type="text" name= "searchStr" [(ngModel)]="searchStr" (keyup)= "searchMusics()" class="form-control mr-sm-2 search-input"  placeholder="Search music....">
   </div>
 </form>
 
