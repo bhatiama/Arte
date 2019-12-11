@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
   searchMusic(){
     this.clientService.getToken()
     .subscribe(res => {
-      this.clientService.searchMusic(this.searchStr,'artist',res.access_token)
+      this.clientService.searchMusicArtist(this.searchStr,'artist',res.access_token)
       .subscribe(res =>{
         this.searchRes = res.artists.items;
     })

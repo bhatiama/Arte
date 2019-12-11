@@ -10,8 +10,8 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./artist.component.scss']
 })
 export class ArtistComponent implements OnInit {
-searchStr: string;
-searchRes: Artist[];
+  searchStr: string;
+  searchRes: Artist[];
   constructor(private clientService: ClientService, private route: ActivatedRoute) { }
 
   ngOnInit() {
