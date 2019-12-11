@@ -15,3 +15,11 @@
     5. package.json defines all dev dependencies.
     6. app.js file in Middleware folder contains all backend realated declaration and port definition.
 
+## Prerequisites
+
+    1. Visual Code studio or similar IDE
+    2. Git Bash
+    3. Node.js version 10.9.0 or later.
+    4. NPM package manager
+    5. Angular CLI version 8.3.19.
+
