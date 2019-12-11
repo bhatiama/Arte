@@ -2,25 +2,33 @@
 <html>
 
 <head>
-  <title>Spotify Final Project</title>
+  <title>Arte</title>
   <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-oOs/gFavzADqv3i5nCM+9CzXe3e5vXLXZ5LZ7PplpsWpTCufB7kqkTlC9FtZ5nJo" crossorigin="anonymous">
-  <link rel="stylesheet" href="
-  main.scss">
+  <link rel="stylesheet" href="main.css">
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">ARTÈ</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
-    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">ARTÈ</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+        aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="nav-link"><button class="btn btn-secondary my-2 my-sm-0 navlogin" href="/login">Login</button></a>
+    </div>
+  </nav>
+
   <div class="container">
     <div id="login">
-      <h1>Welcome to my project</h1>
-      <a href="/login" class="btn btn-primary">Start</a>
+      <div class="row justify-content-md-center mt-5">
+        <div class="col-md-3">
+          <h1>Want to leave the troubles behind?</h1><small class="text-muted">at least for a while?</small>
+          <div><a href="/login" class="login btn btn-primary btn-lg">Yes</a></div>
+        </div>
+        
+      </div>
     </div>
     <div id="loggedin">
       <div id="user-profile">
