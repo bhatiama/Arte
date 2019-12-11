@@ -22,9 +22,10 @@ export class ClientService {
   private AlbumsUrl: string;
   private encoded = btoa(this.clientId + ':' + this.clientSecret);
   private AlbumUrl: string;
+  private token: string;
   constructor(private http: HttpClient) { }
 /**
- * @description gets the token from the api based on the clientid and secret 
+ * @description gets the token from the api based on the clientid and secret
  */
   getToken(): Observable<any> {
     const params = ('grant_type=client_credentials');
@@ -38,16 +39,22 @@ export class ClientService {
     return this.http.post('https://accounts.spotify.com/api/token', params, httpOptions);
 
   }
+
+  setToken(token: string) {
+    this.token = token;
+  }
+
 /**
  * @description gets user name
  * @param token auth token
  */
   getUsername(token: string): Observable<any> {
     this.searchUrl = 'https://api.spotify.com/v1/me';
+    console.log(this.token);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + this.token
       })
     };
     console.log(httpOptions);
@@ -64,7 +71,7 @@ export class ClientService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + this.token
       })
     };
 
@@ -73,7 +80,7 @@ export class ClientService {
 /**
  * @description searches for artists
  * @param str string that is passed as a query param
- * @param type type is album 
+ * @param type type is album
  * @param token auth token
  */
   searchMusicArtist(str: string, type = 'artist', token: string): Observable<any> {
@@ -142,7 +149,7 @@ export class ClientService {
   }
 
 /**
- * 
+ *
  * @param id gets a particular artist
  * @param token the Identity token
  */
@@ -160,8 +167,8 @@ export class ClientService {
 
   /**
    * @function getAlbums
-   * @param artistId string based on the id this function will return list of albums 
-   * @param token 
+   * @param artistId string based on the id this function will return list of albums
+   * @param token
    */
   getAlbums(artistId: string, token: string): Observable<any> {
 
@@ -174,6 +181,17 @@ export class ClientService {
       })
     };
     return this.http.get(this.AlbumUrl, httpOptions);
+  }
+
+  getPlaylistTracks(playlistId: string): Observable<any> {
+    this.searchUrl = 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + this.token
+      })
+    };
+    return this.http.get(this.searchUrl, httpOptions);
   }
 }
 

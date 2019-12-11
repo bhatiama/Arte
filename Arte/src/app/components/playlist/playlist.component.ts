@@ -9,23 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistComponent implements OnInit {
   searchResult: string[];
+  tracks: string[];
   constructor(private client: ClientService) { }
 
 
   // service calls for getting playlists
   ngOnInit() {
-    this.client.getToken()
-    .subscribe(res => {
-      console.log(res);
-      this.client.getUsername(res.access_token)
+      this.client.getUsername()
       .subscribe(res => {
-        console.log(res);
-        this.client.getPlaylist(res.user_id)
+        this.client.getPlaylist(res.id)
       // tslint:disable-next-line: no-shadowed-variable
       .subscribe(res => {
         this.searchResult = res.items;
+        console.log(this.searchResult);
         });
       });
+  }
+
+  getPlaylistTracks(playlistId: string) {
+    console.log(playlistId);
+    this.client.getPlaylistTracks(playlistId)
+    .subscribe(res => {
+      this.tracks = res.items;
+      console.log(this.tracks);
     });
   }
 
