@@ -16,11 +16,11 @@ export class TracksComponent implements OnInit {
   searchMusics(){
     this.clientService.getToken()
     .subscribe(res => {
-      this.clientService.searchMusics(this.searchStr,'track',res.access_token)
-      .subscribe(res =>{
+      this.clientService.searchMusicTrack(this.searchStr, 'track', res.access_token)
+      .subscribe(res => {
         this.searchRes = res.tracks.items;
-    })
-  })
+    });
+  });
 }
 
 }
