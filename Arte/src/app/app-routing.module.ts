@@ -9,7 +9,7 @@ import { ArtistComponent } from './components/artist/artist.component';
 import { AboutComponent } from './components/about/about.component';
 import { TracksComponent } from './components/tracks/tracks.component';
 
-
+// All routes to redirect to specific components
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'about', component: AboutComponent},
