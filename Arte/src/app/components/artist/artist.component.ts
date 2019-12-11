@@ -1,6 +1,8 @@
+import { ClientService } from 'src/app/services/client.service';
 import { Component, OnInit } from '@angular/core';
 import { Artist } from 'src/app/models/artist';
 import { Album } from 'src/app/models/albums';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-artist',
@@ -8,15 +10,20 @@ import { Album } from 'src/app/models/albums';
   styleUrls: ['./artist.component.scss']
 })
 export class ArtistComponent implements OnInit {
-  id: number;
-  name: string;
-  genre: any;
-  artist: Artist[];
-  albums: Album[];
-  constructor() { }
+searchStr: string;
+searchRes: Artist[];
+  constructor(private clientService: ClientService, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
-
-
+  searchMusic() {
+    this.clientService.getToken()
+      .subscribe(res => {
+        this.clientService.searchMusicArtist(this.searchStr, 'artist', res.access_token)
+          .subscribe(res => {
+            console.log(res.artists.items)
+            this.searchRes = res.artists.items;
+          })
+      })
+  }
 }

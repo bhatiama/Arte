@@ -1,4 +1,4 @@
-import { AboutUsComponent } from './components/about-us/about-us.component';
+
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NgModule } from '@angular/core';
