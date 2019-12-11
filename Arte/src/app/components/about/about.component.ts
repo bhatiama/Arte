@@ -16,7 +16,7 @@ export class AboutComponent implements OnInit {
   searchMusics(){
     this.clientService.getToken()
     .subscribe(res => {
-      this.clientService.searchMusics(this.searchStr,'track',res.access_token)
+      this.clientService.searchMusicTrack(this.searchStr,'track',res.access_token)
       .subscribe(res =>{
         this.searchRes = res.tracks.items;
     })

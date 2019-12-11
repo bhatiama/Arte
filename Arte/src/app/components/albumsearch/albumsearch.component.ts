@@ -10,23 +10,22 @@ import { ClientService } from '../../services/client.service';
 })
 export class AlbumsearchComponent implements OnInit {
 
-  searchStr:string;
-  searchRes : Album[];
+  searchStr: string;
+  searchRes: Album[];
 
-  constructor(private albumService:ClientService) { }
+  constructor(private albumService: ClientService) { }
 
   ngOnInit() {
   }
-  searchMusic(){
+  searchMusic() {
     this.albumService.getToken()
-    .subscribe(res => {
-      this.albumService.searchMusic(this.searchStr,'album',res.access_token)
-      .subscribe(res =>{
-        console.log("In Res");
-        console.log(res);
-        this.searchRes = res.albums.items;
-    })
-  })
-
-}
+      .subscribe(res => {
+        this.albumService.searchMusicAlbum(this.searchStr, 'album', res.access_token)
+          .subscribe(res => {
+            console.log("In Res");
+            console.log(res);
+            this.searchRes = res.albums.items;
+          })
+      })
+  }
 }
