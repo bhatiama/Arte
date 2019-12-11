@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { ClientService } from './../../services/client.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-playlist',
@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playlist.component.scss']
 })
 export class PlaylistComponent implements OnInit {
+  @Output() addPlaylist: EventEmitter<any> = new EventEmitter();
   searchResult: string[];
   tracks: string[];
+  playlistName: string;
+  list: {};
   constructor(private client: ClientService) { }
 
 
@@ -27,11 +30,20 @@ export class PlaylistComponent implements OnInit {
   }
 
   getPlaylistTracks(playlistId: string) {
-    console.log(playlistId);
     this.client.getPlaylistTracks(playlistId)
     .subscribe(res => {
       this.tracks = res.items;
-      console.log(this.tracks);
+    });
+  }
+
+  onSubmit() {
+    console.log(this.playlistName);
+    this.client.getUsername()
+    .subscribe(res => {
+      this.client.createPlaylist(res.id, this.playlistName)
+      .subscribe(res =>{
+        console.log(res);
+      });
     });
   }
 
