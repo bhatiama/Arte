@@ -12,14 +12,14 @@ import { LogoutComponent } from './components/logout/logout.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomepageComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'playlist', component: PlaylistComponent},
-  {path: 'albums', component: AlbumsearchComponent},
-  {path: 'album/:id', component: AlbumComponent},
-  {path: 'artists', component: ArtistComponent},
-  {path: 'tracks', component: TracksComponent},
-  {path: 'logout', component: LogoutComponent}
+  { path: '', component: HomepageComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'playlist', component: PlaylistComponent },
+  { path: 'albums', component: AlbumsearchComponent },
+  { path: 'album/:id', component: AlbumComponent },
+  { path: 'artists', component: ArtistComponent },
+  { path: 'tracks', component: TracksComponent },
+  { path: 'logout', component: LogoutComponent },
 ];
 
 @NgModule({
