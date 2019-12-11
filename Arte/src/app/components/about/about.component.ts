@@ -13,6 +13,8 @@ export class AboutComponent implements OnInit {
   searchRes : string[];
   ngOnInit() {
   }
+
+  
   searchMusics(){
     this.clientService.getToken()
     .subscribe(res => {

@@ -17,6 +17,8 @@ export class AlbumsearchComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // function call to fetch albums and call service to API
   searchMusic() {
     this.albumService.getToken()
       .subscribe(res => {

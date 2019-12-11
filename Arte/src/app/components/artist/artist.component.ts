@@ -16,6 +16,8 @@ export class ArtistComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // function and service call to get artist details
   searchMusic() {
     this.clientService.getToken()
       .subscribe(res => {

@@ -13,6 +13,8 @@ export class TracksComponent implements OnInit {
   searchRes: string[];
   ngOnInit() {
   }
+
+  // service call to fetch tracks from API
   searchMusics(){
     this.clientService.getToken()
     .subscribe(res => {

@@ -11,6 +11,8 @@ export class PlaylistComponent implements OnInit {
   searchResult: string[];
   constructor(private client: ClientService) { }
 
+
+  // service calls for getting playlists
   ngOnInit() {
     this.client.getToken()
     .subscribe(res => {
