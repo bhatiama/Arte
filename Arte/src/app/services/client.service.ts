@@ -20,6 +20,7 @@ export class ClientService {
   private AlbumsUrl: string;
   private encoded = btoa(this.clientId + ':' + this.clientSecret);
   private AlbumUrl: string;
+  private token: string;
   constructor(private http: HttpClient) { }
 
   getToken(): Observable<any> {
@@ -35,12 +36,17 @@ export class ClientService {
 
   }
 
-  getUsername(token: string): Observable<any> {
+  setToken(token: string) {
+    this.token = token;
+  }
+
+  getUsername(): Observable<any> {
     this.searchUrl = 'https://api.spotify.com/v1/me';
+    console.log(this.token);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + this.token
       })
     };
     console.log(httpOptions);
@@ -54,7 +60,7 @@ export class ClientService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Bearer ' + token
+        Authorization: 'Bearer ' + this.token
       })
     };
 

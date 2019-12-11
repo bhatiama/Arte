@@ -12,19 +12,14 @@ export class PlaylistComponent implements OnInit {
   constructor(private client: ClientService) { }
 
   ngOnInit() {
-    this.client.getToken()
-    .subscribe(res => {
-      console.log(res);
-      this.client.getUsername(res.access_token)
+      this.client.getUsername()
       .subscribe(res => {
-        console.log(res);
-        this.client.getPlaylist(res.user_id)
+        this.client.getPlaylist(res.id)
       // tslint:disable-next-line: no-shadowed-variable
       .subscribe(res => {
         this.searchResult = res.items;
         });
       });
-    });
   }
 
 }
