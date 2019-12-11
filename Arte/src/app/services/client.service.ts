@@ -193,5 +193,16 @@ export class ClientService {
     };
     return this.http.get(this.searchUrl, httpOptions);
   }
+
+  createPlaylist(userId: string): Observable<any> {
+    this.searchUrl = 'https://api.spotify.com/v1/users/' + userId + '/playlists';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.token
+      })
+    };
+    return this.http.get(this.searchUrl, httpOptions);
+  }
 }
 
