@@ -6,6 +6,10 @@
     3. Search Artists
     4. Access and Create his playlist
 
+## Description of files
+
+    1. 
+
 ## Usage
 
     Arte is for non-commercial use only.
