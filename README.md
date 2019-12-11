@@ -31,3 +31,9 @@
     3. Run `npm install` to install angular libraries.
     4. Then navigate to project directory 'Middleware' and run `npm install` to install node libraries.
     5. create an account on developer spotify and whitelist IP and add callback URL.
+    6. Bydefault, Middleware runs on 3000 port.
+
+## Build and run the application
+    1. To build the app, run `npm run build`.
+    2. Run `ng serve` to start angular server. By default application will run on 4200 port with url http://localhost:4200/
+    3. Run `node server.js` command to start node server. Node server is set to run on port 3000.
