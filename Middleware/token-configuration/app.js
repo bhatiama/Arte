@@ -16,8 +16,10 @@ const express = require('express'), //Using Express framework for application ea
   app = express(),
   cookieParser = require('cookie-parser'), //https://www.npmjs.com/package/cookie-parser
   request = require('request'),
-  querystring = require('querystring');
-  hostname ="localhost";
+  querystring = require('querystring'),
+  hostname ="localhost",
+  stateKey = 'spotify_auth_state';
+  redirectUri = "http://localhost:4200";
 /**
  * Api auth key from spotify
  */
@@ -59,9 +61,9 @@ app.get('/login', function (req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
-      client_id: client_id,
+      client_id: clientId,
       scope: scope,
-      redirect_uri: redirect_uri,
+      redirect_uri: redirectUri,
       state: state
     }));
 });
@@ -98,7 +100,7 @@ app.get('/callback', function (req, res) {
         grant_type: 'authorization_code'
       },
       headers: {
-        'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+        'Authorization': 'Basic ' + (new Buffer(clientId + ':' + clientSecret).toString('base64'))
       },
       json: true
     };
@@ -128,7 +130,30 @@ app.get('/callback', function (req, res) {
     });
   }
 });
+/**
+ * For getting the token from refresh token
+ */
+app.get('/refresh_token', function (req, res) {
+  var refreshToken = req.query.refresh_token;
+  var authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    headers: { 'Authorization': 'Basic ' + (new Buffer(clientId + ':' + clientSecret).toString('base64')) },
+    form: {
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken
+    },
+    json: true
+  };
 
+  request.post(authOptions, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      var access_token = body.access_token;
+      res.send({
+        'access_token': access_token
+      });
+    }
+  });
+});
 app.listen(port, hostname, () => {
   console.log(`Middleware is up on port ${port}`);
 })

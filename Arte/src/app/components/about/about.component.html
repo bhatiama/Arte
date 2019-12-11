@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<!-- <div class="jumbotron">
   <h1 class="display-5">ABOUT US</h1>
   <p class="lead">Artè</p>
   <hr class="my-4">
@@ -8,4 +8,27 @@
   <p class="lead">
     <a class="btn btn-primary btn-md" href="https://community.spotify.com/?_ga=2.71770897.340062563.1575941475-863870673.1575941475" role="button" target="_blank">Learn more</a>
   </p>
+</div> -->
+
+<h1>Search tracks</h1>
+<p class="lead">this is for you to search tracks</p>
+<form>
+  <div>
+    <input type="text" name= "searchStr" [(ngModel)]="searchStr" (keyup)= "searchMusics()" class= "form-control" placeholder="Search music....">
+  </div>
+</form>
+
+
+<div *ngIf = "searchRes">
+    <div *ngFor = "let res of searchRes">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search-res well">
+                    <h4><a routerLink = '{{res.external_urls.spotify}}'>{{res.name}}</a></h4>
+                    <a class="btn-link" href="{{res.external_urls.spotify}}" target="_blank">Listen Track</a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
