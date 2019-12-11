@@ -10,6 +10,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
+import { SearchComponent } from './components/search/search.component'
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     AboutComponent,
     ArtistComponent,
     HomepageComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
