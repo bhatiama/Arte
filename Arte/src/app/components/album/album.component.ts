@@ -16,9 +16,8 @@ export class AlbumComponent implements OnInit {
 
   constructor(private ClientService:ClientService , private _route:ActivatedRoute){}
 
-
+  // Called to fetch album details
   ngOnInit(){
-
 
       this._route.params
       .pipe(map(params => params['id']))
