@@ -141,6 +141,17 @@ export class ClientService {
     return this.http.get(this.AlbumUrl, httpOptions);
   }
 
+  getPlaylistTracks(playlistId: string): Observable<any> {
+    this.searchUrl = 'https://api.spotify.com/v1/playlists/' + playlistId + '/tracks';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Bearer ' + this.token
+      })
+    };
+    return this.http.get(this.searchUrl, httpOptions);
+  }
+
 
 
 }
