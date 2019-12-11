@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistComponent implements OnInit {
   searchResult: string[];
+  tracks: string[];
   constructor(private client: ClientService) { }
 
   ngOnInit() {
@@ -18,8 +19,18 @@ export class PlaylistComponent implements OnInit {
       // tslint:disable-next-line: no-shadowed-variable
       .subscribe(res => {
         this.searchResult = res.items;
+        console.log(this.searchResult);
         });
       });
+  }
+
+  getPlaylistTracks(playlistId: string) {
+    console.log(playlistId);
+    this.client.getPlaylistTracks(playlistId)
+    .subscribe(res => {
+      this.tracks = res.items;
+      console.log(this.tracks);
+    });
   }
 
 }
