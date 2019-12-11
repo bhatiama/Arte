@@ -125,7 +125,7 @@ export class ClientService {
   }
 
   searchMusicArtist(str: string, type = 'artist', token: string): Observable<any> {
-    this.searchUrl = 'https://api.spotify.com/v1/search?query=' + str + '&offset=0&limit=20&type=' + type;
+    this.searchUrl = 'https://api.spotify.com/v1/search?query=' + str + '&offset=0&limit=9&type=' + type;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
