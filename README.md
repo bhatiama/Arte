@@ -37,3 +37,11 @@
     1. To build the app, run `npm run build`.
     2. Run `ng serve` to start angular server. By default application will run on 4200 port with url http://localhost:4200/
     3. Run `node server.js` command to start node server. Node server is set to run on port 3000.
+
+## Versioning
+- We use GitHub and Git bash for version controlling.
+
+## References
+
+1. [Spotify Web API](https://developer.spotify.com/web-api/)
+2. [Spotify Web API Endpoints](https://developer.spotify.com/web-api/endpoint-reference/)
