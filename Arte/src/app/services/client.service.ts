@@ -48,7 +48,7 @@ export class ClientService {
  * @description gets user name
  * @param token auth token
  */
-  getUsername(token: string): Observable<any> {
+  getUsername(): Observable<any> {
     this.searchUrl = 'https://api.spotify.com/v1/me';
     console.log(this.token);
     const httpOptions = {
@@ -194,15 +194,20 @@ export class ClientService {
     return this.http.get(this.searchUrl, httpOptions);
   }
 
-  createPlaylist(userId: string): Observable<any> {
+  createPlaylist(userId: string, playlistName: string): Observable<any> {
     this.searchUrl = 'https://api.spotify.com/v1/users/' + userId + '/playlists';
+    console.log("here:"+playlistName);
+    const params = {
+      name: playlistName,
+      public: true
+    };
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + this.token
+        Authorization: 'Bearer ' + this.token,
+        'Content-Type': 'application/json'
       })
     };
-    return this.http.get(this.searchUrl, httpOptions);
+    return this.http.post(this.searchUrl, params, httpOptions);
   }
 }
 

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="form-group">
-    <form class="form-inline my-2">
-      <input type="text" class="form-control create" placeholder="Create New Playlist" id="inputDefault">
-      <button type="button" class="btn btn-primary">+</button>
+    <form class="form-inline my-2" (ngSubmit) = 'onSubmit()'>
+      <input type="text" name="playlistName" [(ngModel)]="playlistName" class="form-control create" placeholder="Create New Playlist" id="inputDefault">
+      <input type="submit" value="+" class="btn btn-primary">
     </form>
   </div>
   <div class="row" *ngIf="searchResult">
