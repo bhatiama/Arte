@@ -16,13 +16,8 @@ export class TracksComponent implements OnInit {
   searchMusics(){
     this.clientService.getToken()
     .subscribe(res => {
-<<<<<<< Updated upstream
       this.clientService.searchMusicTrack(this.searchStr, 'track', res.access_token)
       .subscribe(res => {
-=======
-      this.clientService.searchMusicTrack(this.searchStr,'track',res.access_token)
-      .subscribe(res =>{
->>>>>>> Stashed changes
         this.searchRes = res.tracks.items;
     });
   });
